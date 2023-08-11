@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'planecollector.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'planecollector',
+        'NAME': 'aircraftcollector',
     }
 }
 
