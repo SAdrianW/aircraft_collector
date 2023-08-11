@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aircraft Collector</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header class="navbar-fixed #3949ab indigo darken-1">
+    <nav>
+      <div class="nav-wrapper #3949ab indigo darken-1">
+        <ul>
+          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Aircraft Collector</a></li>
+        </ul>
+        <ul class="right">
+          <li><a href="/about">About</a></li>
+          <li><a href="/aircraft">Main Hangar</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer class="page-footer #3949ab indigo darken-1">
+    <div class="right">All Rights Reserved, &copy; 2021 Aircraft Collector &nbsp; All information sourced from Wikipedia</div>
+  </footer>
+</body>
+</html>
