@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Aircraft Details</h1>
+
+<div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ aircraft.make }}</span>
+      <p>Manufacturer: {{ aircraft.manufacturer }}</p>
+      <p>Role: {{ aircraft.role }}</p>
+      <p>Service years: {{ aircraft.service }}</p>
+      <p>Size: {{ aircraft.dimensions }}</p>
+      <p>Max Speed (km/h): {{ aircraft.max_speed }}</p>
+      <p>Cruise Speed (km/h): {{ aircraft.cruise_speed }}</p>
+      <p>Range (km): {{ aircraft.range }}</p>
+      <p>Armament/ Capacity: {{ aircraft.capacity|linebreaks }}</p>
+      
+    </div>
+  </div>
+
+{% endblock %}

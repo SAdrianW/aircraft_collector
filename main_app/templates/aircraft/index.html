@@ -4,15 +4,22 @@
 <h1>Main Hangar</h1>
 
 {% for aircraft in aircraft_list %}
-  <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ aircraft.name }}</span>
-      <p>Role: {{ aircraft.role }}</p>
-      <p>Armament/ Capacity: {{ aircraft.capacity }}</p>
-      <p>Size: {{ aircraft.size }}</p>
-      
+  <a href="{% url 'detail' aircraft.id %}">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ aircraft.make }}</span>
+        <!-- <p>Manufacturer: {{ aircraft.manufacturer }}</p> -->
+        <p>Role: {{ aircraft.role }}</p>
+        <!-- <p>Service years: {{ aircraft.service }}</p> -->
+        <!-- <p>Size: {{ aircraft.dimensions }}</p> -->
+        <p>Max Speed (km/h): {{ aircraft.max_speed }}</p>
+        <!-- <p>Cruise Speed (km/h): {{ aircraft.cruise_speed }}</p> -->
+        <!-- <p>Range (km): {{ aircraft.range }}</p> -->
+        <!-- <p>Armament/ Capacity: {{ aircraft.capacity|linebreaks }}</p> -->
+        <!-- several data points hidden to give point to detail page -->
+      </div>
     </div>
-  </div>
+  </a>
 {% endfor %}
 
 {% endblock %}
