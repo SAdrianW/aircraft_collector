@@ -9,4 +9,5 @@ urlpatterns = [
     path('aircraft/create/', views.AircraftCreate.as_view(), name='aircraft_create'),
     path('aircraft/<int:pk>/update/', views.AircraftUpdate.as_view(), name='aircraft_update'),
     path('aircraft/<int:pk>/delete/', views.AircraftDelete.as_view(), name='aircraft_delete'),
+    path('aircraft/<int:aircraft_id>/add_maintain/', views.add_maintain, name='add_maintain'),
 ]

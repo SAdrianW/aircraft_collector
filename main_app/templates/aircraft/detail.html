@@ -2,23 +2,65 @@
 {% block content %}
 
 <h1>Aircraft Details</h1>
-
-<div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ aircraft.make }}</span>
-      <p>Manufacturer: {{ aircraft.manufacturer }}</p>
-      <p>Role: {{ aircraft.role }}</p>
-      <p>Service years: {{ aircraft.service }}</p>
-      <p>Size: {{ aircraft.dimensions }}</p>
-      <p>Max Speed (km/h): {{ aircraft.max_speed }}</p>
-      <p>Cruise Speed (km/h): {{ aircraft.cruise_speed }}</p>
-      <p>Range (km): {{ aircraft.range }}</p>
-      <p>Armament/ Capacity: {{ aircraft.capacity|linebreaks }}</p>
-      <div class="card-action">
-        <a href="{% url 'aircraft_update' aircraft.id %}">Update</a>
-        <a href="{% url 'aircraft_delete' aircraft.id %}">Decommision</a>
-      </div>      
+<div class="row">
+    <div class="col s6">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ aircraft.make }}</span>
+                <p>Manufacturer: {{ aircraft.manufacturer }}</p>
+                <p>Role: {{ aircraft.role }}</p>
+                <p>Service years: {{ aircraft.service }}</p>
+                <p>Size: {{ aircraft.dimensions }}</p>
+                <p>Max Speed (km/h): {{ aircraft.max_speed }}</p>
+                <p>Cruise Speed (km/h): {{ aircraft.cruise_speed }}</p>
+                <p>Range (km): {{ aircraft.range }}</p>
+                <p>Armament/ Capacity: {{ aircraft.capacity|linebreaks }}</p>
+                <div class="card-action">
+                    <a href="{% url 'aircraft_update' aircraft.id %}">Update</a>
+                    <a href="{% url 'aircraft_delete' aircraft.id %}">Decommision</a>
+                </div>      
+            </div>
+          </div>
     </div>
-  </div>
+    <div class="col s6">
+        <form action="{% url 'add_maintain' aircraft.id %}" method="POST">
+            {% csrf_token %}
+            {{ maintain_form.as_p }}
+            <input type="submit" class="btn orange" value="Assign Task">
+        </form>
+        <br>
+        {% if aircraft.maintain_today %}
+            <div class="card-panel center-align">{{aircraft.make}} is fully maintained and ready to fly.</div>
+        {% else %}
+            <div class="card-panel red-text center-align">{{ aircraft.make }} requires maintainance</div>
+        {% endif %}
+        <table class="striped">
+          <thead>
+            <tr><th>Date</th><th>Maintainance Task</th></tr>
+          </thead>
+          <tbody>
+            {% for maintainance in aircraft.maintainance_set.all %}
+              <tr>
+                <td>{{maintainance.date}}</td>
+                <td>{{maintainance.get_maintain_display}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>    
+</div>
+
+<script>
+    const dateEl = document.getElementById('id_date');
+    M.Datepicker.init(dateEl, {
+        format: 'yyyy-mm-dd',
+        defaultDate: new Date(),
+        setDefaultDate: true,
+        autoClose: true
+    });
+
+    const selectEl = document.getElementById('id_maintain');
+    M.FormSelect.init(selectEl);
+</script>
 
 {% endblock %}

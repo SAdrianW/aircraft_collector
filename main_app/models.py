@@ -1,5 +1,14 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
+
+MAINTAIN = (
+   ('R', 'Repairs'),
+   ('F', 'Re-fuel'),
+   ('A', 'Re-arm'),
+   ('S', 'Re-supply'),
+)
+
 
 # Create your models here.
 class Aircraft(models.Model):
@@ -20,3 +29,22 @@ class Aircraft(models.Model):
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'aircraft_id': self.id})
+    
+    def maintain_today(self):
+        return self.maintainance_set.filter(date=date.today()).count() >= len(MAINTAIN)-1 
+    
+class Maintainance(models.Model):
+    date = models.DateField('Maintainace Date')
+    maintain = models.CharField(
+        max_length=1,
+        choices= MAINTAIN,
+        default=MAINTAIN[0][0]
+        )
+    
+    aircraft = models.ForeignKey(Aircraft, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f'{self.get_maintain_display()} on {self.date}'
+
+    class Meta:
+        ordering = ['-date']
