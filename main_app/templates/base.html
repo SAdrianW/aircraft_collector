@@ -15,11 +15,12 @@
     <nav>
       <div class="nav-wrapper #3949ab indigo darken-1">
         <ul>
-          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Aircraft Collector</a></li>
+          <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Aircraft Collector</a></li>
         </ul>
         <ul class="right">
-          <li><a href="/about">About</a></li>
-          <li><a href="/aircraft">Main Hangar</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'aircraft_create' %}">New Aircraft Registration</a></li>
+          <li><a href="{% url 'main_hangar' %}">Main Hangar</a></li>
         </ul>
       </div>
     </nav>

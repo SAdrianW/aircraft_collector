@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Aircraft
 
 # Create your views here.
@@ -18,3 +18,15 @@ def aircraft_index(request):
 def aircraft_detail(request, aircraft_id):
     aircraft = Aircraft.objects.get(id=aircraft_id)
     return render(request, 'aircraft/detail.html', { 'aircraft': aircraft })
+
+class AircraftCreate(CreateView):
+    model = Aircraft
+    fields = '__all__'
+
+class AircraftUpdate(UpdateView):
+    model = Aircraft
+    fields = '__all__'
+
+class AircraftDelete(DeleteView):
+    model = Aircraft
+    success_url = '/aircraft'

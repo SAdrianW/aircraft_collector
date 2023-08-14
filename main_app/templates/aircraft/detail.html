@@ -14,7 +14,10 @@
       <p>Cruise Speed (km/h): {{ aircraft.cruise_speed }}</p>
       <p>Range (km): {{ aircraft.range }}</p>
       <p>Armament/ Capacity: {{ aircraft.capacity|linebreaks }}</p>
-      
+      <div class="card-action">
+        <a href="{% url 'aircraft_update' aircraft.id %}">Update</a>
+        <a href="{% url 'aircraft_delete' aircraft.id %}">Decommision</a>
+      </div>      
     </div>
   </div>
 

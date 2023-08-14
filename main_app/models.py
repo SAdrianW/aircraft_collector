@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Aircraft(models.Model):
@@ -16,3 +17,6 @@ class Aircraft(models.Model):
     
     def __str__(self):
         return f"{self.make} - {self.role}"
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'aircraft_id': self.id})
