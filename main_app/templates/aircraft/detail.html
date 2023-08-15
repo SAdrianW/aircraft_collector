@@ -10,11 +10,15 @@
                 <!-- change: span around title  -->
                 <p><span class="highlight">Manufacturer:</span> {{ aircraft.manufacturer }}</p>
                 <p>Role: {{ aircraft.role }}</p>
-                <p>Service years: {{ aircraft.service }}</p>
-                <p>Size: {{ aircraft.dimensions }}</p>
-                <p>Max Speed (km/h): {{ aircraft.max_speed }}</p>
-                <p>Cruise Speed (km/h): {{ aircraft.cruise_speed }}</p>
-                <p>Range (km): {{ aircraft.range }}</p>
+                <p>Service years: {{ aircraft.service_years }}</p>
+                <p>Length: {{ aircraft.length_m }}</p>
+                <p>Wingspan: {{ aircraft.width_m }}</p>
+                <p>Height: {{ aircraft.height_m }}</p>
+                <p>Powerplant: {{ aircraft.powerplant }}</p>
+                <p>Max Speed (km/h): {{ aircraft.max_speed_kmh }}</p>
+                <p>Cruise Speed (km/h): {{ aircraft.cruise_speed_kmh }}</p>
+                <p>Range (km): {{ aircraft.range_km }}</p>
+                <p>Max Altitude (km): {{ aircraft.max_altitude_m }}</p>
                 <p>Armament/ Capacity: {{ aircraft.capacity|linebreaks }}</p>
                 <div class="card-action">
                     <a href="{% url 'aircraft_update' aircraft.id %}">Update</a>
