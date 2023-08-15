@@ -19,3 +19,9 @@ label {
   color: #000 !important;
   font-size: 1rem;
 }
+
+.highlight {
+  color: aqua;
+  font-size: 1.2rem !important;
+  font-weight: 700;
+}

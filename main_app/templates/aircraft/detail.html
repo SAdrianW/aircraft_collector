@@ -7,7 +7,8 @@
         <div class="card">
             <div class="card-content">
                 <span class="card-title">{{ aircraft.make }}</span>
-                <p>Manufacturer: {{ aircraft.manufacturer }}</p>
+                <!-- change: span around title  -->
+                <p><span class="highlight">Manufacturer:</span> {{ aircraft.manufacturer }}</p>
                 <p>Role: {{ aircraft.role }}</p>
                 <p>Service years: {{ aircraft.service }}</p>
                 <p>Size: {{ aircraft.dimensions }}</p>
@@ -48,6 +49,54 @@
           </tbody>
         </table>
       </div>    
+</div>
+
+<hr>
+<div class="row">
+  <div class="col s6">
+    <h3>{{ aircraft.make }} is based in:</h3>
+    {% if aircraft.airbases.count %}
+      {% for airbase in aircraft.airbases.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+                {{ airbase.airbase_name }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'remove_airbase' aircraft.id airbase.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn purple darken-2">Withdraw</button>
+            </form>
+          </div>           
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>No airbases</h5>
+    {% endif %}
+  </div>
+  <div class="col s6">
+    <h3>Available Airbases</h3>
+    {% if airbases.count %}
+      {% for airbase in airbases.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+                {{ airbase.airbase_name }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'assoc_airbase' aircraft.id airbase.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn light-blue">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{cat.name}} Already At All Airbases Available</h5>
+    {% endif %}
+  </div>
 </div>
 
 <script>

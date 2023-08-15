@@ -4,9 +4,9 @@
 <h1>Main Hangar</h1>
 
 {% for aircraft in aircraft_list %}
-  <a href="{% url 'detail' aircraft.id %}">
+  <a class="text-blue text-darken-4" href="{% url 'detail' aircraft.id %}">
     <div class="card">
-      <div class="card-content">
+      <div class="card-content text-blue text-darken-4">
         <span class="card-title">{{ aircraft.make }}</span>
         <!-- <p>Manufacturer: {{ aircraft.manufacturer }}</p> -->
         <p>Role: {{ aircraft.role }}</p>

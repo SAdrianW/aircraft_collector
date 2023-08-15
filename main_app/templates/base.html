@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aircraft Collector</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
@@ -22,6 +22,8 @@
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'aircraft_create' %}">New Aircraft Registration</a></li>
           <li><a href="{% url 'main_hangar' %}">Main Hangar</a></li>
+          <li><a href="{% url 'airbases_index' %}">Airbase Tour</a></li>
+          <li><a href="{% url 'airbases_create' %}">New Airbase Registration</a></li>
         </ul>
       </div>
     </nav>
@@ -31,7 +33,14 @@
     {% endblock %}
   </main>
   <footer class="page-footer #3949ab indigo darken-1">
-    <div class="right">All Rights Reserved, &copy; 2021 Aircraft Collector &nbsp; All information sourced from Wikipedia</div>
+    <div class="container">
+      <div class="row">
+        <div class="right">All Rights Reserved, &copy; 2021 Aircraft Collector &nbsp; All information sourced from Wikipedia</div>
+      </div>
+    </div>
+    <div class="footer-copyright indigo darken-1">
+      <div class="containter"></div>
+    </div>
   </footer>
 </body>
 </html>

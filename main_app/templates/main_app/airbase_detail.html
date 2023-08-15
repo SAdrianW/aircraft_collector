@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Airbase Details</h1>
+
+<div class="row">
+  <div class="col s6 col-offset-3">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ airbase.airbase_name }}</span>
+        <p>Location: {{ airbase.location }}</p>
+        <p>Country: {{ airbase.country }}</p>
+        <p>Airbase Type: {{ airbase.airbase_type }}</p>
+        <p>Area (km^2): {{ airbase.area_km2 }}</p>
+        <p>Runway Length (km): {{ airbase.runway_length_km }}</p>
+        <p>Description: {{ airbase.description }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{% url 'airbases_update' airbase.id %}">Edit</a>
+        <a href="{% url 'airbases_delete' airbase.id %}">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
