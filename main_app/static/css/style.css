@@ -9,10 +9,10 @@ main {
   flex: 1 0 auto;
 }
 
-footer.page-footer {
+/* footer.page-footer {
   padding-top: 0;
   text-align: right;
-}
+} */
 
 
 label {
@@ -20,8 +20,8 @@ label {
   font-size: 1rem;
 }
 
-.highlight {
-  color: aqua;
-  font-size: 1.2rem !important;
+.card .card-content .highlight {
+  /* color: aqua !important; */
+  /* font-size: 1.2rem !important; */
   font-weight: 700;
 }

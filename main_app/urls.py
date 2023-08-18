@@ -10,6 +10,7 @@ urlpatterns = [
     path('aircraft/<int:pk>/update/', views.AircraftUpdate.as_view(), name='aircraft_update'),
     path('aircraft/<int:pk>/delete/', views.AircraftDelete.as_view(), name='aircraft_delete'),
     path('aircraft/<int:aircraft_id>/add_maintain/', views.add_maintain, name='add_maintain'),
+    path('aircraft/<int:aircraft_id>/add_photo/', views.add_photo, name='add_photo'),
     path('aircraft/<int:aircraft_id>/assoc_airbase/<int:airbase_id>/', views.assoc_airbase, name='assoc_airbase'),
     path('aircraft/<int:aircraft_id>/remove_airbase/<int:airbase_id>/', views.remove_airbase, name='remove_airbase'),
     path('airbases/', views.AirbaseList.as_view(), name='airbases_index'),
